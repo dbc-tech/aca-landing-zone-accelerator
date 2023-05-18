@@ -33,3 +33,7 @@ output "spokeApplicationGatewaySubnetId" {
 output "spokeApplicationGatewaySubnetName" {
   value = var.applicationGatewaySubnetAddressPrefix != "" ? data.azurerm_subnet.appGatewaySubnet[0].name : null
 }
+
+output "selfHostedRunnerName" {
+  value = var.addSelfHostedRunner == true ? data.azurerm_subnet.selfHostedRunnerSubnet[0].id : null
+}

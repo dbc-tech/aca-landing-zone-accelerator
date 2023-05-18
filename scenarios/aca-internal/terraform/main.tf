@@ -97,23 +97,23 @@ module "helloWorldApp" {
   tags                                    = var.tags
 }
 
-module "applicationGateway" {
-  source                          = "./modules/06-application-gateway"
-  workloadName                    = var.workloadName
-  environment                     = var.environment
-  location                        = var.location
-  resourceGroupName               = module.spoke.spokeResourceGroupName
-  keyVaultId                      = module.supportingServices.keyVaultId
-  appGatewayCertificateKeyName    = var.appGatewayCertificateKeyName
-  appGatewayFQDN                  = var.appGatewayFQDN
-  appGatewayPrimaryBackendEndFQDN = module.helloWorldApp.helloWorldAppFQDN
-  appGatewaySubnetId              = module.spoke.spokeApplicationGatewaySubnetId
-  appGatewayLogAnalyticsId        = module.containerAppsEnvironment.logAnalyticsWorkspaceId
-  appGatewayCertificatePath       = var.appGatewayCertificatePath
-  tags                            = var.tags
+# module "applicationGateway" {
+#   source                          = "./modules/06-application-gateway"
+#   workloadName                    = var.workloadName
+#   environment                     = var.environment
+#   location                        = var.location
+#   resourceGroupName               = module.spoke.spokeResourceGroupName
+#   keyVaultId                      = module.supportingServices.keyVaultId
+#   appGatewayCertificateKeyName    = var.appGatewayCertificateKeyName
+#   appGatewayFQDN                  = var.appGatewayFQDN
+#   appGatewayPrimaryBackendEndFQDN = module.helloWorldApp.helloWorldAppFQDN
+#   appGatewaySubnetId              = module.spoke.spokeApplicationGatewaySubnetId
+#   appGatewayLogAnalyticsId        = module.containerAppsEnvironment.logAnalyticsWorkspaceId
+#   appGatewayCertificatePath       = var.appGatewayCertificatePath
+#   tags                            = var.tags
 
-  # RBAC role should be assigned before creating a new secret (certificate appgw)
-  # moduleDependencies = [
-  #   module.supportingServices.keyVaultSecretsOfficerRoleAssignmentId
-  # ]
-}
+#   # RBAC role should be assigned before creating a new secret (certificate appgw)
+#   # moduleDependencies = [
+#   #   module.supportingServices.keyVaultSecretsOfficerRoleAssignmentId
+#   # ]
+# }

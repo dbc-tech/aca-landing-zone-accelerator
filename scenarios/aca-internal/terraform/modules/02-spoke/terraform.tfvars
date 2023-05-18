@@ -9,6 +9,7 @@ infraSubnetAddressPrefix              = "10.1.0.0/23"
 infraSubnetName                       = "snet-infra"
 privateEndpointsSubnetAddressPrefix   = "10.1.2.0/24"
 applicationGatewaySubnetAddressPrefix = "10.1.3.0/24"
+selfHostedRunnerAddressPrefix         = "10.1.4.0/24"
 hubVnetId                             = "<Hub VNET ID>"
 securityRules = [
   {

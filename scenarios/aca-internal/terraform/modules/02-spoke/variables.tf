@@ -62,6 +62,30 @@ variable "applicationGatewaySubnetAddressPrefix" {
   default = ""
 }
 
+variable "selfHostedRunnerSubnetName" {
+  default = "snet-runners"
+}
+
+variable "selfHostedRunnerSubnetAddressPrefix" {
+  default = ""
+}
+
 variable "securityRules" {
   default = []
+}
+
+variable "addSelfHostedRunner" {
+  default = true
+}
+
+variable "selfHostedRunnerName" {
+  
+}
+
+variable "selfHostedRunnerToken" {
+  
+}
+
+variable "adminPassword" {
+  
 }

@@ -14,6 +14,15 @@ locals {
     }
   ]
 
+  selfHostedRunnerSubnet = [
+    {
+      "name" = var.selfHostedRunnerSubnetName
+      "addressPrefixes" = tolist([var.selfHostedRunnerSubnetAddressPrefix])
+    }
+  ]
+
   subnets = var.applicationGatewaySubnetAddressPrefix != "" ? concat(local.defaultSubnets, [{ "name" = var.applicationGatewaySubnetName
   "addressPrefixes" = tolist([var.applicationGatewaySubnetAddressPrefix]) }]) : local.defaultSubnets
+
+  subnetsWithRunner = var.addSelfHostedRunner == true? concat(local.subnets,local.selfHostedRunnerSubnet): local.subnets
 }

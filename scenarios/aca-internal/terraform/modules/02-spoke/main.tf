@@ -25,7 +25,7 @@ module "vnet" {
   resourceGroupName = azurerm_resource_group.spokeResourceGroup.name
   addressSpace      = var.vnetAddressPrefixes
   tags              = var.tags
-  subnets           = local.subnets
+  subnets           = var.addSelfHostedRunner == true? local.subnetsWithRunner: local.subnets
 }
 
 module "nsgContainerAppsEnvironmentNsg" {
@@ -58,6 +58,15 @@ module "peeringHubToSpoke" {
   remoteRgName   = local.hubVnetResourceGroup
 }
 
+module "selfHostedRunner" {
+  source = "../../../../shared/terraform/modules/self-hosted-runner"
+  resourceGroupName = azurerm_resource_group.spokeResourceGroup.name
+  vmName = var.selfHostedRunnerName
+  adminPassword = var.adminPassword
+  runnerToken = var.selfHostedRunnerToken
+  subnetId = data.azurerm_subnet.selfHostedRunnerSubnet[0].id
+}
+
 data "azurerm_subnet" "infraSubnet" {
   depends_on = [
     module.vnet
@@ -82,6 +91,16 @@ data "azurerm_subnet" "appGatewaySubnet" {
     module.vnet
   ]
   name                 = var.applicationGatewaySubnetName
+  resource_group_name  = azurerm_resource_group.spokeResourceGroup.name
+  virtual_network_name = module.vnet.vnetName
+}
+
+data "azurerm_subnet" "selfHostedRunnerSubnet" {
+  count = var.addSelfHostedRunner == true ? 1 : 0
+  depends_on = [
+    module.vnet
+  ]
+  name                 = var.selfHostedRunnerSubnetName
   resource_group_name  = azurerm_resource_group.spokeResourceGroup.name
   virtual_network_name = module.vnet.vnetName
 }
