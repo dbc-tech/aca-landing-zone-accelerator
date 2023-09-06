@@ -1,0 +1,38 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "terraform"
+    directory: "/scenarios/aca-internal/terraform"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "terraform"
+    directory: "/scenarios/aca-internal/terraform/modules/01-hub"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "terraform"
+    directory: "/scenarios/aca-internal/terraform/modules/02-spoke"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "terraform"
+    directory: "/scenarios/aca-internal/terraform/modules/03-supporting-services"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "terraform"
+    directory: "/scenarios/aca-internal/terraform/modules/04-container-apps-environment"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "terraform"
+    directory: "/scenarios/aca-internal/terraform/modules/05-hello-world-sample-app"
+    schedule:
+      interval: "weekly"
+   - package-ecosystem: "terraform"
+     directory: "/scenarios/aca-internal/terraform/modules/06-application-gateway"
+     schedule:
+      interval: "weekly"
+   - package-ecosystem: "terraform"
+     directory: "/scenarios/aca-internal/terraform/modules/06-front-door"
+     schedule:
+      interval: "weekly"
