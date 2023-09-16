@@ -5,12 +5,12 @@ variable "resourceTypeAbbreviations" {
     applicationInsights      = "appi"
     appService               = "app"
     bastion                  = "bas"
-    containerAppsEnvironment = "cae"
-    containerRegistry        = "cr"
-    cosmosDbNoSql            = "cosno"
-    frontDoor                = "afd"
-    frontDoorEndpoint        = "fde"
-    frontDoorWaf             = "fdfp"
+    containerAppsEnvironment = "ctae"
+    containerRegistry        = "acr"
+    cosmosDbNoSql            = "cosmo"
+    frontDoor                = "fd"
+    frontDoorEndpoint        = "fdep"
+    frontDoorWaf             = "fdwaf"
     keyVault                 = "kv"
     logAnalyticsWorkspace    = "log"
     managedIdentity          = "id"
@@ -100,7 +100,7 @@ variable "environment" {
 
 variable "location" {
   type    = string
-  default = "northeurope"
+  default = "australiaeast"
 }
 
 variable "uniqueId" {}

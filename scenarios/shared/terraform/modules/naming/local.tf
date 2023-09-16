@@ -1,7 +1,7 @@
 locals {
-  namingBase               = "${var.resourceTypeToken}-${var.workloadName}-${var.environment}-${var.regionAbbreviations["${var.location}"]}"
-  namingBaseUnique         = "${var.resourceTypeToken}-${var.workloadName}-${var.uniqueId}-${var.environment}-${var.regionAbbreviations["${var.location}"]}"
-  namingBaseNoWorkloadName = "${var.resourceTypeToken}-${var.environment}-${var.regionAbbreviations["${var.location}"]}"
+  namingBase               = "${var.resourceTypeToken}-${var.environment}-${var.workloadName}"
+  namingBaseUnique         = "${var.resourceTypeToken}-${var.environment}-${var.workloadName}-${var.uniqueId}"
+  namingBaseNoWorkloadName = "${var.resourceTypeToken}-${var.environment}"
 
   resourceNames = {
     vnetSpoke                              = "${replace(local.namingBase, var.resourceTypeToken, var.resourceTypeAbbreviations.virtualNetwork)}-spoke"
@@ -28,8 +28,8 @@ locals {
     logAnalyticsWorkspace                  = replace(local.namingBase, var.resourceTypeToken, var.resourceTypeAbbreviations.logAnalyticsWorkspace)
     privateEndpointsNsg                    = "${var.resourceTypeAbbreviations.networkSecurityGroup}-${replace(local.namingBase, var.resourceTypeToken, var.resourceTypeAbbreviations.privateEndpoint)}"
     privateLinkServiceName                 = "${var.resourceTypeAbbreviations.privateLinkService}-${replace(local.namingBase, var.resourceTypeToken, var.resourceTypeAbbreviations.frontDoor)}"
-    rgHubName                              = "${var.resourceTypeAbbreviations.resourceGroup}-${var.workloadName}-hub-${var.environment}-${var.regionAbbreviations[lower(var.location)]}"
-    rgSpokeName                            = "${var.resourceTypeAbbreviations.resourceGroup}-${var.workloadName}-spoke-${var.environment}-${var.regionAbbreviations[lower(var.location)]}"
+    rgHubName                              = "${var.resourceTypeAbbreviations.resourceGroup}-${var.environment}-hub-${var.workloadName}"
+    rgSpokeName                            = "${var.resourceTypeAbbreviations.resourceGroup}-${var.environment}-spoke-${var.workloadName}"
     serviceBus                             = replace(local.namingBaseUnique, var.resourceTypeToken, var.resourceTypeAbbreviations.serviceBus)
     serviceBusPep                          = "${var.resourceTypeAbbreviations.privateEndpoint}-${replace(local.namingBaseUnique, var.resourceTypeToken, var.resourceTypeAbbreviations.serviceBus)}"
     vmJumpBox                              = replace(local.namingBaseNoWorkloadName, var.resourceTypeToken, var.resourceTypeAbbreviations.virtualMachine)
