@@ -3,7 +3,7 @@ variable "osType" {
 }
 
 variable "location" {
-  default = "northeurope"
+  default = "australiaeast"
 }
 
 variable "tags" {

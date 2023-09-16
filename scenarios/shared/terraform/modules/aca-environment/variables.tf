@@ -4,7 +4,7 @@
 
 variable "location" {
   type    = string
-  default = "northeurope"
+  default = "australiaeast"
 }
 
 variable "environmentName" {

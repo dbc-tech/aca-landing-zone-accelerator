@@ -9,7 +9,7 @@ variable "endpointName" {
 }
 
 variable "location" {
-  default = "northeurope"
+  default = "australiaeast"
   type    = string
 }
 
