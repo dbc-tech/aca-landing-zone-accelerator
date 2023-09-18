@@ -19,6 +19,7 @@ variable "environment" {
 
 variable "location" {
   type = string
+  default = "australiaeast"
 }
 
 variable "spokeVnetId" {

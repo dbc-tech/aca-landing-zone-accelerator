@@ -22,7 +22,7 @@ resource "azurerm_monitor_diagnostic_setting" "rule" {
 
       retention_policy {
         enabled = true
-        days    = 30
+        days    = 0
       }
     }
   }
@@ -37,7 +37,7 @@ resource "azurerm_monitor_diagnostic_setting" "rule" {
 
       retention_policy {
         enabled = true
-        days    = 30
+        days    = 0
       }
     }
   }

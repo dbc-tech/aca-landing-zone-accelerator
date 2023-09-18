@@ -108,3 +108,8 @@ variable "uniqueId" {}
 variable "resourceTypeToken" {
   default = "RES_TYPE"
 }
+
+variable "instance" {
+  type    = string
+  default = "01"
+}

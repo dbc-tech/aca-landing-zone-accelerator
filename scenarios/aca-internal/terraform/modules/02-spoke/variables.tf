@@ -16,7 +16,7 @@ variable "environment" {
 
 variable "location" {
   type    = string
-  default = "northeurope"
+  default = "australiaeast"
 }
 
 variable "hubVnetId" {

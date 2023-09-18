@@ -8,9 +8,14 @@ terraform {
   }
   required_version = ">= 1.3.4"
 
-  # backend "azurerm" {
-  # }
+  backend "azurerm" {
+    resource_group_name  = "rg-sbox-dbc-tfstate-01"
+    storage_account_name = "stsboxdbctfstate01"
+    container_name       = "tfstate"
+    key                  = "acalza/hub.tfstate"
+  }
 }
+
 provider "azurerm" {
   features {}
 }
